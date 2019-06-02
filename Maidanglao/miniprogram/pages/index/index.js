@@ -1,120 +1,142 @@
-//index.js
-const app = getApp()
-
+// miniprogram/pages/index/index.js
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    avatarUrl: './user-unlogin.png',
-    userInfo: {},
-    logged: false,
-    takeSession: false,
-    requestResult: ''
+    latitude: 28.693638,
+    longitude: 115.849830,
+    scale: 18,
+    markers: [],
+    height: '',
+    showList: false,
+    minHeight: '',
+    index: 0,
+    items: [
+      {
+        name: "南昌麦当劳凤凰中大道(万达)餐厅",
+        address: "江西省南昌市东湖区红谷滩万达广场二层2055号商铺大玩家旁和三层3036商铺万达影城旁",
+        distance: "3.0",
+        icons: ["亲子活动","甜品站","Wi-Fi","McCafe"],
+        index: 0,
+        latitude: 28.693638,
+        longitude: 115.849830,
+      },
+      {
+        name: "南昌麦当劳新建中心餐厅",
+        address: "江西省南昌市新建区新建中心一楼",
+        distance: "3.8",
+        icons: ["亲子活动","Wi-Fi"],
+        index: 1,
+        latitude: 28.680130,
+        longitude: 115.819126,
+      },
+      {
+        name: "南昌麦当劳丰和南大道DT(山姆会员店)餐厅",
+        address: "江西省南昌市新建区乐世界购物中心",
+        distance: "6.5",
+        icons: ["得速来","亲子活动","甜品站"],
+        index: 2,
+        latitude: 28.655750,
+        longitude: 115.837960,
+      }
+    ],
+    isRight: true,
+    showMarker: true
   },
 
-  onLoad: function() {
-    if (!wx.cloud) {
-      wx.redirectTo({
-        url: '../chooseLib/chooseLib',
-      })
-      return
-    }
-
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              this.setData({
-                avatarUrl: res.userInfo.avatarUrl,
-                userInfo: res.userInfo
-              })
-            }
-          })
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    let height = wx.getSystemInfoSync().windowHeight;
+    let width = wx.getSystemInfoSync().windowWidth;
+    let hrpx = ( (750 * height) / width);
+    this.setData({
+      height: hrpx - 400 - 80,
+      minHeight: hrpx - 268 - 98
+    })
+    this.addMarkers();
+  },
+  toDetail () {
+    wx.navigateTo({
+      url: './menu/menu'
+    })
+  },
+  changeFocus (e) {
+    let index = e.markerId;
+    let promise = new Promise((resolve, reject)=>{
+      if (this.data.index === index) {
+        this.setData({
+          showMarker: !this.data.showMarker
+        })
+      } else {
+        let items = this.data.items;
+        let head = items[index];
+        items.splice(index,1);
+        items.unshift(head);
+        this.setData({
+          index: index,
+          showMarker: true,
+          items: items
+        })
+      }
+    })
+    promise.then(
+      this.addMarkers()
+    )
+  },  
+  addMarkers () {
+    let items = this.data.items;
+    let markers = [];
+    for (let i = 0; i < items.length; i ++) {
+      if (i === this.data.index && this.data.showMarker === true) {
+        let marker = {
+          id: i,
+          iconPath: '/images/index/marker-focus.png',
+          width: 40,
+          height: 40,
+          latitude: items[this.data.items[i].index].latitude,
+          longitude: items[this.data.items[i].index].longitude
         }
+        markers.push(marker);
+      }else {
+        let marker = {
+          id: i,
+          iconPath: '/images/index/marker.png',
+          width: 30,
+          height: 30,
+          latitude: items[this.data.items[i].index].latitude,
+          longitude: items[this.data.items[i].index].longitude
+        }
+        markers.push(marker);
       }
-    })
-  },
-
-  onGetUserInfo: function(e) {
-    if (!this.logged && e.detail.userInfo) {
-      this.setData({
-        logged: true,
-        avatarUrl: e.detail.userInfo.avatarUrl,
-        userInfo: e.detail.userInfo
-      })
     }
-  },
-
-  onGetOpenid: function() {
-    // 调用云函数
-    wx.cloud.callFunction({
-      name: 'login',
-      data: {},
-      success: res => {
-        console.log('[云函数] [login] user openid: ', res.result.openid)
-        app.globalData.openid = res.result.openid
-        wx.navigateTo({
-          url: '../userConsole/userConsole',
-        })
-      },
-      fail: err => {
-        console.error('[云函数] [login] 调用失败', err)
-        wx.navigateTo({
-          url: '../deployFunctions/deployFunctions',
-        })
-      }
+    this.setData({
+      markers: markers
     })
   },
-
-  // 上传图片
-  doUpload: function () {
-    // 选择图片
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['compressed'],
-      sourceType: ['album', 'camera'],
-      success: function (res) {
-
-        wx.showLoading({
-          title: '上传中',
-        })
-
-        const filePath = res.tempFilePaths[0]
-        
-        // 上传图片
-        const cloudPath = 'my-image' + filePath.match(/\.[^.]+?$/)[0]
-        wx.cloud.uploadFile({
-          cloudPath,
-          filePath,
-          success: res => {
-            console.log('[上传文件] 成功：', res)
-
-            app.globalData.fileID = res.fileID
-            app.globalData.cloudPath = cloudPath
-            app.globalData.imagePath = filePath
-            
-            wx.navigateTo({
-              url: '../storageConsole/storageConsole'
-            })
-          },
-          fail: e => {
-            console.error('[上传文件] 失败：', e)
-            wx.showToast({
-              icon: 'none',
-              title: '上传失败',
-            })
-          },
-          complete: () => {
-            wx.hideLoading()
-          }
-        })
-
-      },
-      fail: e => {
-        console.error(e)
-      }
+  showList () {
+    this.setData({
+      showList: true
     })
   },
-
+  hiddenList () {
+    this.setData({
+      showList: false,
+      latitude: this.data.markers[this.data.index].latitude,
+      longitude: this.data.markers[this.data.index].longitude
+    })
+  },
+  toLeft () {
+    this.setData({
+      isRight: false
+    })
+  },
+  toRight () {
+    this.setData({
+      isRight: true
+    })
+  }
 })

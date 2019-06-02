@@ -1,0 +1,87 @@
+.restaurant {
+    height: 224rpx;
+    width: 740rpx;
+    /* border-left: 10rpx solid #ffffff; */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding-left: 20rpx;
+    background-color: #fff;
+    margin-bottom: 20rpx;
+}
+.restaurant-box {
+    width: 690rpx;
+    height: 116rpx;
+    border-bottom: 2rpx solid #d8d8d8;
+    display: flex;
+    position: relative;
+}
+.box-left {
+    width: 516rpx;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.box-hidden {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+}
+.restaurant-name {
+    font-size: 28rpx;
+    font-weight: bold;
+    margin-bottom: 10rpx;
+}
+.restaurant-address {
+    font-size: 26rpx;
+    color: #737373;
+}
+.box-right {
+    height: 100%;
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+.right-top {
+    font-size: 26rpx;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    margin-bottom: 14rpx;
+}
+.right-top image {
+    width: 30rpx;
+    height: 30rpx;
+    margin-left: 10rpx;
+}
+.right-bottom {
+    font-size: 26rpx;
+    color: #737373;
+    margin-right: 6rpx;
+}
+.icon {
+    width: 690rpx;
+    height: 106rpx;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.icon-item {
+    height: 52rpx;
+    padding: 0 20rpx;
+    background-color: #ffeec3;
+    display: flex;
+    align-items: center;
+    border-radius: 10rpx;
+    margin-right: 20rpx;
+}
+.icon-item text {
+    font-size: 24rpx;
+    color: #896f2a;
+}

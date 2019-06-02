@@ -1,51 +1,71 @@
-<!--index.wxml-->
 <view class="container">
-
-  <!-- 用户 openid -->
-  <view class="userinfo">
-    <button 
-      open-type="getUserInfo" 
-      bindgetuserinfo="onGetUserInfo"
-      class="userinfo-avatar"
-      style="background-image: url({{avatarUrl}})"
-    ></button>
-    <view>
-      <button class="userinfo-nickname" bindtap="onGetOpenid">点击获取 openid</button>
+    <view class="header">
+        <view class="box">
+            <view class="address">
+                <text>南昌市</text>
+            </view>
+            <view class="search">
+                <image src="../../images/index/search.png" mode="widthFix" />
+                <input type="text" placeholder="查找门店、筛选门店" placeholder-style="color: #bfbfbf"></input>
+            </view>
+        </view>
     </view>
-  </view>
-
-
-  <!-- 上传图片 -->
-  <view class="uploader">
-    <view class="uploader-text" bindtap="doUpload">
-      <text>上传图片</text>
+    <view class="content" wx:if="{{!showList}}">
+        <view class="map-box" >
+            <map id="myMap"
+                latitude="{{latitude}}"
+                scale="{{scale}}"
+                markers="{{markers}}"
+                longitude="{{longitude}}"
+                show-location
+                style="height: {{height}}rpx"
+                bindmarkertap="changeFocus"
+            ></map>
+        </view>
+        <view class="title" bindtap="showList">
+            <text>查看所有门店</text>
+            <image src="../../images/index/arrow-top.png" mode="widthFix"/>
+        </view>
+        <view class="border-left" style="border-color: #ffc836" bindtap="toDetail">
+            <listItem name="{{items[index].name}}"
+                address="{{items[index].address}}"
+                distance="{{items[index].distance}}"
+                icons="{{items[index].icons}}"
+            ></listItem>
+        </view>
     </view>
-    <view class="uploader-container" wx:if="{{imgUrl}}">
-      <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
+    <view class="content" wx:else style="margin-top: 268rpx; min-height: {{minHeight}}rpx">
+        <view class="head">
+            <view class="head-left">
+                <div class="border-box {{isRight ? '' : 'click'}}" bindtap="toLeft">
+                    <text>去过的餐厅</text>
+                </div>
+            </view>
+            <view class="head-right">
+                <div class="border-box {{isRight ? 'click' : ''}}" bindtap="toRight">
+                    <text>附近的餐厅</text>
+                </div>
+            </view>
+        </view>
+        <view class="title fixed" bindtap="hiddenList">
+            <text>返回查看地图</text>
+            <image src="../../images/index/arrow-bottom.png" mode="widthFix"/>
+        </view>
+        <view class="items" wx:if="{{isRight}}" bindtap="toDetail">
+            <view wx:for="{{items}}" wx:key="index" wx:for-index="idx" class="border-left {{idx === 0 ? 'addBorder' : ''}}">
+                <listItem name="{{item.name}}"
+                    address="{{item.address}}"
+                    distance="{{item.distance}}"
+                    icons="{{item.icons}}"
+                ></listItem>
+            </view>
+        </view>
+        <view class="box">
+        </view>
     </view>
-  </view>
-
-
-  <!-- 操作数据库 -->
-  <view class="uploader">
-    <navigator url="../databaseGuide/databaseGuide" open-type="navigate" class="uploader-text">
-      <text>前端操作数据库</text>
-    </navigator>
-  </view>
-
-  <!-- 新建云函数 -->
-  <view class="uploader">
-    <navigator url="../addFunction/addFunction" open-type="navigate" class="uploader-text">
-      <text>快速新建云函数</text>
-    </navigator>
-  </view>
-
-  <!-- 云调用 -->
-  <view class="uploader">
-    <navigator url="../openapi/openapi" open-type="navigate" class="uploader-text">
-      <text>云调用</text>
-    </navigator>
-  </view>
-
-
+    
+    <view class="button" bindtap="toDetail">
+        <text>进入菜单点餐</text>
+    </view>
 </view>
+
