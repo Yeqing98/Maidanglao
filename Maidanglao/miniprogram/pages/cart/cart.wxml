@@ -3,7 +3,7 @@
   <view class="zhushi look">
     <view class="Option">主食</view>
     <image class="zhushi-img" src="{{zhushi.imgUrl}}" />
-    <view class="zhushi-txt">{{zhushiImg.name}}</view>
+    <view class="zhushi-txt">{{zhushi.name}}</view>
   </view>
   <view class="xiaoshi look">
     <view class="option">小食</view>
@@ -14,9 +14,10 @@
       indicator-active-color="#ffdb19"
       current="0"
       duration="500" 
-      circular="true">
+      circular="true"
+      bindchange="chooseXiaoshi">
       <block wx:for="{{xiaoshi}}" wx:key="{{index}}">
-        <swiper-item class="" item-id="">          
+        <swiper-item class="" item-id="" data-price="{{item.price}}">          
           <image class="slide-img" src="{{item.imgUrl}}" />
           <view class="slide-txt">{{item.name}}</view>
         </swiper-item>
@@ -32,7 +33,8 @@
       indicator-active-color="#ffdb19"
       current="0"
       duration="500" 
-      circular="true">
+      circular="true"
+      bindchange="chooseDrink">
       <block wx:for="{{drink}}" wx:key="{{index}}">
         <swiper-item class="" item-id="">          
           <image class="slide-img" src="{{item.imgUrl}}" />
@@ -43,7 +45,7 @@
   </view>
   <view class="account">
     <text>单价￥</text>
-    <view class="price">{{price}}</view>
+    <view class="price">{{unitPrice}}</view>
     <view class="jiajian">|
       <view class="add number" bindtap="clickAdd">+</view>
       <view class="shuliang number">{{number}}</view>
@@ -53,6 +55,6 @@
   <view class="cart">
     <text class="heji">合计</text><span>￥</span>
     <view class="add-price">{{totalPrice}}</view>
-    <text class="join-cart">加入购物车</text><span class="arrow"></span>
+    <text class="join-cart" bindtap="navigate">加入购物车</text><span class="arrow"></span>
   </view>
 </view>

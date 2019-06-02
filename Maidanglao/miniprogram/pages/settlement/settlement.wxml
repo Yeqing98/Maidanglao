@@ -1,0 +1,132 @@
+<view class="settlementPage">
+  <comfireOrder class="pos {{show?'show': 'hidden'}}" show="{{show}}"></comfireOrder>
+  <view class="check-phone">
+    <view class="check-phone-top">
+      <text class="check-phone-txt">请验证手机号</text>
+    </view>
+    <text class="check-phone-title">验证手机号即可完成登录，并注册为麦当劳会员</text>
+  </view>
+  <view class="address bgcf">
+    <view class="res-info">
+      <view class="res-name">
+        <image class="res-name-icon" src="../../images/settlement/location.png" />
+        <text class="res-name-txt">南昌麦当劳凤凰中大道（万达）餐厅</text>
+      </view>
+      <view class="res-address">
+        <text class="res-address-name">江西省南昌市东湖区红谷滩万达广场二层2055号商铺大玩家旁和三层3036商铺万达影城旁</text>
+      </view>
+    </view>
+    <view class="res-address-icon"></view>
+  </view>
+  <view class="meal-time">
+    <view class="meal-time-title meal-title pd30">
+      <text class="meal-time-txt">请选择取餐时间</text>
+    </view>
+    <view class="time pd30 bgcf">
+      <block wx:for="{{ mealTime }}" wx:key="mealTime">
+        <view class="time-item">
+          <view class="hookOrCircle" data-id="{{ item.num }}" bindtap="onChooseTime">
+            <view class="circle" wx:if="{{isHookTime[item.num] === true}}"></view>
+            <image class="hook" src="../../images/settlement/hook.png" wx:else />
+          </view>
+          <text class="time-txt">{{item.time}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="meal-mode">
+    <view class="meal-mode-title meal-title pd30">
+      <text class="meal-mode-txt">请选择就餐方式</text>
+    </view>
+    <view class="mode bgcf">
+      <view class="mode-hall m-flex pd30">
+        <text class="mode-txt">堂食</text>
+        <view class="hookOrCircle mode-right" data-mode="堂食" bindtap="onChooseMode">
+          <view class="circle" wx:if="{{isHookMode[0] === true}}"></view>
+          <image class="hook" src="../../images/settlement/hook.png" wx:else />
+        </view>
+      </view>
+      <view class="mode-outer m-flex pd30">
+        <text class="mode-txt">外带</text>
+        <view class="hookOrCircle mode-right" data-mode="外带" bindtap="onChooseMode"> 
+          <view class="circle" wx:if="{{isHookMode[1] === true}}"></view>
+          <image class="hook" src="../../images/settlement/hook.png" wx:else />
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="bill bgcf">
+    <view class="list pd30">
+      <view class="list-item">
+        <view class="item-main">
+          <view class="item-main-title">
+            <text>麦辣鸡腿汉堡大套餐</text>
+          </view>
+          <view class="money">
+            <text class="money-symbol">￥</text>
+            <text class="money-num">{{price}}</text>
+          </view>
+          <view class="calculate">
+            <view class="reduce" bindtap="reduce">
+              <view class="reduce-symbol"></view>
+            </view>
+            <view class="amount">
+              <text class="amount-txt">{{amount}}</text>
+            </view>
+            <view class="add" bindtap="add">
+              <text class="add-symbol">+</text>
+            </view>
+          </view>
+        </view>
+        <view class="item-secondary">
+          <text class="secondary" decode="true" space="true">-&nbsp;&nbsp;经典麦辣鸡腿汉堡</text>
+        </view>
+      </view>
+    </view>
+    <view class="total pd30">
+      <text class="total-txt">合计</text>
+      <view class="total-money">
+        <text class="total-money-symbol">￥</text>
+        <text class="total-money-num">{{totalPrice}}</text>
+      </view>
+    </view>
+    <view class="description pd30">
+      <text class="description-txt">餐品及服务说明></text>
+      <view class="description-icon">
+        <image src="../../images/settlement/exclamatoryMark.png" />
+      </view>
+    </view>
+  </view>
+  <view class="wx-pay bgcf">
+    <text class="wx-pay-txt pd30">微信支付</text>
+    <view class="hookOrCircle mode-right">
+      <view class="circle" data-index="{{ item.num }}" wx:if="{{isHook}}"></view>
+      <image class="hook" src="../../images/settlement/hook.png" wx:else />
+    </view>
+  </view>
+  <view class="invoice bgcf">
+    <view class="invoice-require">
+      <text class="invoice-require-txt pd30">发票需求</text>
+      <view class="hookOrCircle mode-right" >
+        <view class="circle" bindtap="onChooseInvoice" wx:if="{{isHookInVoice === true}}"></view>
+        <image class="hook" bindtap="onNoChooseInvoice" src="../../images/settlement/hook.png" wx:else />
+      </view>
+    </view>
+    <view class="invoice-description pd30">
+      <text>如需发票，请在微信支付成功提示消息中申请，我们将为您提供电子发票</text>
+    </view>
+  </view>
+  <view class="footer">
+    <text class="heji">合计</text>
+    <view class="pay">
+      <text class="pay-symbol">￥</text>
+      <text class="pay-num">{{totalPrice}}</text>
+    </view>
+    <view class="line"></view>
+    <view class="toPay">
+      <text class="toPay-txt">去支付</text>
+      <view class="toPay-symbol"></view>
+    </view>
+  </view>
+</view>
+
