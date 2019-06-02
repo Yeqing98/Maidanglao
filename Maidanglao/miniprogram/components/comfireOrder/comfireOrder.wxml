@@ -1,0 +1,21 @@
+<view class="confirePage {{show?'':'hidden'}}" catchtouchmove="true">
+  <view class="overlay"></view>
+  <view class="confirm">
+    <view class="hook-img">
+      <image src="../../images/settlement/hook1.png" />
+    </view>
+    <view class="null"></view>
+    <view class="hook-shadow"></view>
+    <view class="confirm-tip">
+      <text class="tip">删除最后一项餐品，您将会回到菜单页，不删除您将会回到订单页</text>
+    </view>
+    <view class="btn"> 
+      <view class="fBtn">
+        <view>重新点餐</view>
+      </view>
+      <view class="tBtn" bindtap="onPreserved">
+        <view>保留餐品</view>
+      </view>
+    </view>
+  </view>
+</view>

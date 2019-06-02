@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "comfireOrder": "../../components/comfireOrder/comfireOrder"
+  }
+}
