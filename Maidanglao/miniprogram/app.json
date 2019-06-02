@@ -1,6 +1,7 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/cart/cart"
   ],
   "window": {
     "backgroundColor": "#ffffff",

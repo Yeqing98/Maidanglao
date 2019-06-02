@@ -27,10 +27,10 @@
             <image src="../../images/index/arrow-top.png" mode="widthFix"/>
         </view>
         <view class="border-left" style="border-color: #ffc836" bindtap="toDetail">
-            <listItem name="{{items[index].name}}"
-                address="{{items[index].address}}"
-                distance="{{items[index].distance}}"
-                icons="{{items[index].icons}}"
+            <listItem name="{{staticItems[index].name}}"
+                address="{{staticItems[index].address}}"
+                distance="{{staticItems[index].distance}}"
+                icons="{{staticItems[index].icons}}"
             ></listItem>
         </view>
     </view>

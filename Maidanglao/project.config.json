@@ -8,7 +8,11 @@
 		"minified": true,
 		"newFeature": true
 	},
+<<<<<<< HEAD
 	"appid": "wx60127933e28c7162",
+=======
+	"appid": "wx487e7a41e105c29c",
+>>>>>>> a0718493ac0922fd68a1373c2e6246c1c887ba64
 	"projectname": "Maidanglao",
 	"libVersion": "2.2.5",
 	"simulatorType": "wechat",
