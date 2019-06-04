@@ -1,0 +1,77 @@
+<view class="container">
+    <swiper indicator-dots="true" indicator-active-color="rgba(242,207,4,1)" autoplay="true" circular="true" interval="4000" duration="1000" class="header" wx:if="{{hidden}}">
+        <swiper-item wx:for="{{adImage}}" wx:key="index">
+            <image mode="aspectFill" class="headerImg" src="{{item.image}}" />
+        </swiper-item>
+    </swiper>
+    <view class="middle" wx:if="{{hidden}}">
+        <navigator style="display: inline-block" target="" url="../index/index" hover-class="navigator-hover">
+            <view class="address">
+                <view>
+                    <view class="storeName">{{storeName}}</view>
+                    <view class="storeAdress">{{storeAdress}}</view>
+                </view>
+            </view>
+        </navigator>
+        <view class="member">
+            <image src="../../images/menuImg/u=324093054,273186418&fm=26&gp=0.jpg" class="menberImg" />
+            <text class="memberText">会员中心</text>
+        </view>
+    </view>
+    <view class="menuContent">
+        <view class="scrollLeft">
+            <scroll-view scroll-y>
+                <navigator class="search" url="../" hover-class="none">
+                    <image class="searchImage" src="../../images/menuImg/sou-suo.png" />
+                    <text class="searchText">搜索</text>
+                </navigator>
+                <block wx:for="{{scrollLeft}}" wx:key="index">
+                    <view class="{{curIndex === index ? 'selected' : 'select'}}" bindtap="onSelect" data-index="{{index}}" data-id="{{item.id}}">
+                        <image src="{{item.url}}" class="selImg" wx:if="{{curIndex === index}}" />
+                        <view class="{{curIndex === index ? 'selectedText' : 'selectText'}}">
+                            {{item.name}}
+                        </view>
+                    </view>
+                </block>
+            </scroll-view>
+        </view>
+        <view class="scrollRight">
+            <scroll-view scroll-y scroll-into-view="{{toView}}" scroll-with-animation="true" bindscroll="scrollTop" style="height: 1205rpx">
+                <block wx:for="{{scrollRight}}" wx:key="index">
+                    <view class="food" wx:for="{{item.detail}}" wx:key="index" wx:for-item="food" id="{{item.id}}">
+                        <view class="foodName">{{food.name}}</view>
+                        <view class="foodPrice">
+                            ￥
+                            <view class="foodPriceNum">{{food.price}}</view>
+                            起*
+                        </view>
+                        <image src="{{food.img}}" class="foodPci" />
+                        <view class="custom">
+                            <view class="customText">去定制</view>
+                            <navigator url="" hover-class="none">
+                                <view class="customBtn">
+                                    <image src="../../images/menuImg/toRight.png" class="customPic" />
+                                </view>
+                            </navigator>
+                        </view>
+                        <view class="order">
+                            <view class="orderText">大套餐</view>
+                            <view class="orderBtn" wx:if="{{false}}" bindtap="OnAdd" data-id="{{id}}" data-index="{{index}}">
+                                <image src="../../images/menuImg/jiahao.png" class="orderPic" />
+                            </view>
+                            <view class="orderselect">
+                                <view class="reduce" bindtap="OnReduce">
+                                    <image src="../../images/menuImg/jianhao.png" class="orderPic" />
+                                </view>
+                                <text class="orderTitle">{{food.title}}</text>
+                                <view class="add" bindtap="OnAdd" data-id="{{id}}" data-index="{{index}}">
+                                    <image src="../../images/menuImg/jiahao.png" class="orderPic" />
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </scroll-view>
+        </view>
+    </view>
+</view>
