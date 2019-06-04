@@ -1,12 +1,17 @@
 {
   "pages": [
-    "pages/menu/menu"
+    "pages/menu/menu",
+    "pages/index/index",
+    "pages/cart/cart",
+    "pages/settlement/settlement"
   ],
   "window": {
-    "backgroundColor": "#F6F6F6",
+    "backgroundColor": "#ffffff",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "选择门店",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json"

@@ -1,0 +1,60 @@
+<!--miniprogram/pages/cart/cart.wxml-->
+<view class="main">
+  <view class="zhushi look">
+    <view class="Option">主食</view>
+    <image class="zhushi-img" src="{{zhushi.imgUrl}}" />
+    <view class="zhushi-txt">{{zhushi.name}}</view>
+  </view>
+  <view class="xiaoshi look">
+    <view class="option">小食</view>
+    <view class="all">全部</view>
+    <span class="arrow1"></span>
+    <swiper class="swp" indicator-dots="true" 
+      indicator-color="rgba(0, 0, 0, 0.3)" 
+      indicator-active-color="#ffdb19"
+      current="0"
+      duration="500" 
+      circular="true"
+      bindchange="chooseXiaoshi">
+      <block wx:for="{{xiaoshi}}" wx:key="{{index}}">
+        <swiper-item class="" item-id="" data-price="{{item.price}}">          
+          <image class="slide-img" src="{{item.imgUrl}}" />
+          <view class="slide-txt">{{item.name}}</view>
+        </swiper-item>
+    </block>
+    </swiper>
+  </view>
+  <view class="drink look">
+    <view class="option">饮料</view>
+    <view class="all">全部</view>
+    <span class="arrow1"></span>
+    <swiper class="swp" indicator-dots="true" 
+      indicator-color="rgba(0, 0, 0, 0.3)" 
+      indicator-active-color="#ffdb19"
+      current="0"
+      duration="500" 
+      circular="true"
+      bindchange="chooseDrink">
+      <block wx:for="{{drink}}" wx:key="{{index}}">
+        <swiper-item class="" item-id="">          
+          <image class="slide-img" src="{{item.imgUrl}}" />
+          <view class="slide-txt">{{item.name}}</view>
+        </swiper-item>
+    </block>
+    </swiper>
+  </view>
+  <view class="account">
+    <text>单价￥</text>
+    <view class="price">{{unitPrice}}</view>
+    <view class="jiajian">|
+      <view class="add number" bindtap="clickAdd">+</view>
+      <view class="shuliang number">{{number}}</view>
+      <view class="sub number" bindtap="clickSub">-</view>
+    </view>
+  </view>
+  <view class="cart">
+    <text class="heji">合计</text><span>￥</span>
+    <view class="add-price">{{totalPrice}}</view>
+    <text class="join-cart" bindtap="navigate">加入购物车</text><span class="arrow"></span>
+  </view>
+</view>

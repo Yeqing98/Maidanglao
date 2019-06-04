@@ -1,0 +1,71 @@
+<view class="container">
+    <view class="header">
+        <view class="box">
+            <view class="address">
+                <text>南昌市</text>
+            </view>
+            <view class="search">
+                <image src="../../images/index/search.png" mode="widthFix" />
+                <input type="text" placeholder="查找门店、筛选门店" placeholder-style="color: #bfbfbf"></input>
+            </view>
+        </view>
+    </view>
+    <view class="content" wx:if="{{!showList}}">
+        <view class="map-box" >
+            <map id="myMap"
+                latitude="{{latitude}}"
+                scale="{{scale}}"
+                markers="{{markers}}"
+                longitude="{{longitude}}"
+                show-location
+                style="height: {{height}}rpx"
+                bindmarkertap="changeFocus"
+            ></map>
+        </view>
+        <view class="title" bindtap="showList">
+            <text>查看所有门店</text>
+            <image src="../../images/index/arrow-top.png" mode="widthFix"/>
+        </view>
+        <view class="border-left" style="border-color: #ffc836" bindtap="toDetail">
+            <listItem name="{{staticItems[index].name}}"
+                address="{{staticItems[index].address}}"
+                distance="{{staticItems[index].distance}}"
+                icons="{{staticItems[index].icons}}"
+            ></listItem>
+        </view>
+    </view>
+    <view class="content" wx:else style="margin-top: 268rpx; min-height: {{minHeight}}rpx">
+        <view class="head">
+            <view class="head-left">
+                <div class="border-box {{isRight ? '' : 'click'}}" bindtap="toLeft">
+                    <text>去过的餐厅</text>
+                </div>
+            </view>
+            <view class="head-right">
+                <div class="border-box {{isRight ? 'click' : ''}}" bindtap="toRight">
+                    <text>附近的餐厅</text>
+                </div>
+            </view>
+        </view>
+        <view class="title fixed" bindtap="hiddenList">
+            <text>返回查看地图</text>
+            <image src="../../images/index/arrow-bottom.png" mode="widthFix"/>
+        </view>
+        <view class="items" wx:if="{{isRight}}" bindtap="toDetail">
+            <view wx:for="{{items}}" wx:key="index" wx:for-index="idx" class="border-left {{idx === 0 ? 'addBorder' : ''}}">
+                <listItem name="{{item.name}}"
+                    address="{{item.address}}"
+                    distance="{{item.distance}}"
+                    icons="{{item.icons}}"
+                ></listItem>
+            </view>
+        </view>
+        <view class="box">
+        </view>
+    </view>
+    
+    <view class="button" bindtap="toDetail">
+        <text>进入菜单点餐</text>
+    </view>
+</view>
+

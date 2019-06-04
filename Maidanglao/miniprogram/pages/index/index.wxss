@@ -1,0 +1,132 @@
+page {
+    width: 100%;
+}
+.header {
+    height: 80rpx;
+    width: 100%;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    z-index: 3;
+}
+.header .box {
+    height: 60rpx;
+    display: flex;
+    align-items: center;
+    padding-bottom: 4rpx;
+}
+.header .box .address {
+    font-size: 28rpx;
+    display: inline-block;
+    margin-left: 26rpx;
+    border-bottom: 1px solid #cccccc;
+    padding: 2rpx 0;
+    height: 40rpx;
+}
+.header .box .search {
+    display: inline-block;
+    height: 54rpx;
+    width: 570rpx;
+    margin-left: 26rpx;
+    background-color: #f7f7f7;
+    border-radius: 3px;
+    margin-top: 5rpx;
+    display: flex;
+    align-items: center;
+}
+.search image {
+    width: 40rpx;
+    height: 40rpx;
+    margin-left: 14rpx;
+    display: inline-block;
+}
+.search input {
+    margin-left: 12rpx;
+    width: 480rpx;
+    display: inline-block;
+    font-size: 28rpx;
+}
+.content {
+    width: 100%;
+    margin-top: 80rpx;
+    background-color: #f2f2f2;
+}
+.map-box, #myMap{
+    width: 100%;
+    overflow: hidden;
+}
+.title {
+    height: 76rpx;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2rpx solid #d8d8d8;
+    background-color: #fff;
+}
+.fixed {
+    position: fixed;
+    top: 190rpx;
+    z-index: 3;    
+}
+.content .title text {
+    font-size: 26rpx;
+}
+.content .title image {
+    height: 42rpx;
+    width: 42rpx;
+    margin-left: 14rpx;
+}
+.button {
+    position: fixed;
+    bottom: 0;
+    height: 98rpx;
+    width: 100%;
+    text-align: center;
+    background-color: #1a1a1a;
+}
+.button text {
+    font-size: 36rpx;
+    color: #ffffff;
+    line-height: 98rpx;
+}
+.content .box {
+    height: 78rpx;
+    width: 78rpx;
+}
+.head {
+    height: 90rpx;
+    width: 100%;
+    border-bottom: 20rpx solid #f2f2f2;
+    border-top: 2rpx solid #d8d8d8;
+    background-color: #fff;
+    position: fixed;
+    top: 80rpx;
+    z-index: 3;
+}
+.head-left, .head-right {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+}
+.border-box {
+    display: inline-block;
+    height: 90rpx;
+    line-height: 90rpx;
+    box-sizing: border-box;
+    font-size: 26rpx;
+    color: #737373;
+}
+.click {
+    font-weight: bold;
+    color: black;
+    border-bottom: 4rpx solid #ffc836;
+}
+.border-left {
+    width: 100%;
+    border-left: 10rpx solid #ffffff;
+}
+.addBorder {
+    border-color: #ffc836;
+}

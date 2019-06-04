@@ -1,0 +1,434 @@
+.settlementPage {
+  width: 100%;
+  height: 100%;
+  background-color: #f2f2f2;
+  position: relative;
+}
+
+.pos {
+  position: fixed;
+  z-index: 100;
+}
+
+.pd30 {
+  padding: 0 30rpx;
+}
+
+.bgcf {
+  background-color: #ffffff;
+}
+
+.check-phone {
+  width: 100%;
+  height: 234rpx;
+  background: linear-gradient(to left, #ffce3f, #fce164);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.check-phone-top {
+  width: 340rpx;
+  height: 70rpx;
+  background-color: #333333;
+  border-radius: 10rpx;
+  text-align: center;
+}
+
+.check-phone-txt {
+  font-size: 30rpx;
+  color: #fde836;
+  font-weight: bold;
+  line-height: 70rpx;
+}
+
+.check-phone-title {
+  padding-top: 20rpx;
+  font-size: 26rpx;
+}
+
+.address {
+  padding: 30rpx 30rpx 30rpx 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.res-info {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.res-name {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-right: 10rpx;
+}
+
+.res-name-icon {
+  width: 36rpx;
+  height: 36rpx;
+  padding-right: 6rpx;
+}
+
+.res-name-txt {
+  font-size: 30rpx;
+  font-weight: bold;
+  line-height: 40rpx;
+}
+
+.res-address {
+  width: 476rpx;
+}
+
+.res-address-name {
+  white-space: pre-wrap;
+  padding-left: 8rpx;
+  font-size: 26rpx;
+}
+
+.res-address-icon {
+  width: 36rpx;
+  height: 36rpx;
+  border: 3px solid #000;
+  border-left: hidden;
+  border-bottom: hidden;
+  transform: rotate(45deg) scale(0.5);
+}
+
+.meal-time {
+  width: 100%;
+}
+
+.meal-title {
+  height: 82rpx;
+  font-size: 26rpx;
+  color: #787878;
+  line-height: 82rpx;
+}
+
+.time {
+  width: 100%;
+  height: 214rpx;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.time-item {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.hookOrCircle {
+  width: 40rpx;
+  height: 40rpx;
+  position: relative;
+}
+
+.circle {
+  position: absolute;
+  width: 38rpx;
+  height: 38rpx;
+  box-sizing: border-box;
+  border: 1px solid #787878;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%)
+}
+
+.hook {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.time-txt {
+  padding-left: 30rpx;
+  font-size: 28rpx;
+}
+
+.mode {
+  height: 164rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mode-hall {
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.mode-txt {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.m-flex {
+  height: 50%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.mode-right {
+  position: absolute;
+  right: 30rpx;
+}
+
+.bill {
+  margin-top: 20rpx;
+}
+
+.list {
+  padding-top: 30rpx;
+}
+
+.item-main {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.item-main-title {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.money {
+  font-size: 32rpx;
+  font-weight: bold;
+  position: absolute;
+  right: 156rpx;
+  display: flex;
+  align-items: center;
+}
+
+.money-symbol {
+  font-size: 26rpx;
+}
+
+.calculate {
+  width: 126rpx;
+  height: 40rpx;
+  border-radius: 40rpx;
+  border: 1px solid #ffc836;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  right: 0;
+}
+
+.reduce {
+  position: relative;
+  height: 40rpx;
+  width: 32rpx;
+}
+
+.reduce-symbol {
+  height: 0;
+  width: 16rpx;
+  border: 1px solid #ffc836;
+  position: absolute;
+  left: 10rpx;
+  top: 18rpx;
+}
+
+.amount {
+  font-size: 30rpx;
+}
+
+.add {
+  width: 42rpx;
+  height: 42rpx;
+  border-radius: 50%;
+  background-color: #ffc836;
+  line-height: 42rpx;
+  text-align: center;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.add-symbol {
+  box-sizing: border-box;
+  position: absolute;
+  height: 42rpx;
+  line-height: 38rpx;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.item-secondary {
+  font-size: 26rpx;
+  color: #787878;
+}
+
+.total {
+  padding-top: 30rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.total-txt {
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.total-money {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 30rpx;
+}
+
+.total-money-symbol {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.total-money-num {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.description {
+  padding-bottom: 10rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.description-icon {
+  box-sizing: border-box;
+} 
+
+.description-icon image {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.description-txt {
+  font-size: 26rpx;
+  color: #787878;
+  position: absolute; 
+  line-height: 30rpx;
+  left: 70rpx;
+}
+
+.wx-pay {
+  margin-top: 20rpx;
+  height: 82rpx;
+  display: flex;
+  align-items: center;
+}
+
+.wx-pay-txt {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.invoice {
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+  margin-bottom: 120rpx;
+}
+
+.invoice-require {
+  display: flex;
+  align-items: center;
+}
+
+.invoice-require-txt {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.invoice-description {
+  width: 600rpx;
+  font-size: 26rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  color: #787878;
+}
+
+.footer {
+  width: 100%;
+  height: 100rpx;
+  background-color: #333333;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+}
+
+.heji {
+  color: #fde836;
+  font-size: 28rpx;
+  padding-left: 30rpx;
+  padding-right: 20rpx;
+}
+
+.pay {
+  color: #ffffff;
+}
+
+.pay-symbol {
+  font-size: 28rpx;
+} 
+
+.pay-num {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.line {
+  width: 0;
+  height: 30rpx;
+  border: 1px solid #999999;
+  position: absolute;
+  right: 270rpx;
+}
+
+.toPay {
+  width: 240rpx;
+  height: 98rpx;
+  border: 1px solid #292929;
+  border-top: hidden;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 30rpx;
+}
+
+.toPay-txt {
+  color: #fde836;
+  position: absolute;
+  right: 20px;
+}
+
+.toPay-symbol {
+  width: 20rpx;
+  height: 20rpx;
+  border: 2px solid #fde836;
+  border-left: hidden;
+  border-bottom: hidden;
+  transform: rotate(45deg);
+  position: absolute;
+  right: 2px;
+}
+
+.show {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}

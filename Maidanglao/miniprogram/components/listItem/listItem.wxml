@@ -1,0 +1,22 @@
+<view class="restaurant" bindtap="showDetail">
+    <view class="restaurant-box">
+        <view class="box-left">
+            <text class="restaurant-name box-hidden">{{name}}</text>
+            <text class="restaurant-address box-hidden">{{address}}</text>
+        </view>
+        <view class="box-right">
+            <view class="right-top">
+                <text>门店详情</text>
+                <image src="../../images/index/arrow-right.png" />
+            </view>
+            <view class="right-bottom">
+                <text>{{distance}}千米</text>
+            </view>
+        </view>
+    </view>
+    <view class="icon" >
+        <view class="icon-item" wx:for="{{icons}}" wx:key="index">
+            <text>{{item}}</text>
+        </view>
+    </view>
+</view>
