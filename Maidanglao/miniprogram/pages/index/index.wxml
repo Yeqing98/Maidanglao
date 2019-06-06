@@ -27,10 +27,10 @@
             <image src="../../images/index/arrow-top.png" mode="widthFix"/>
         </view>
         <view class="border-left" style="border-color: #ffc836" bindtap="toDetail">
-            <listItem name="{{staticItems[index].name}}"
-                address="{{staticItems[index].address}}"
-                distance="{{staticItems[index].distance}}"
-                icons="{{staticItems[index].icons}}"
+            <listItem name="{{items[0].name}}"
+                address="{{items[0].address}}"
+                distance="{{items[0].distance}}"
+                icons="{{items[0].icons}}"
             ></listItem>
         </view>
     </view>
@@ -51,8 +51,8 @@
             <text>返回查看地图</text>
             <image src="../../images/index/arrow-bottom.png" mode="widthFix"/>
         </view>
-        <view class="items" wx:if="{{isRight}}" bindtap="toDetail">
-            <view wx:for="{{items}}" wx:key="index" wx:for-index="idx" class="border-left {{idx === 0 ? 'addBorder' : ''}}">
+        <view class="items" wx:if="{{isRight}}">
+            <view wx:for="{{items}}" wx:key="index" wx:for-index="idx" bindtap="toDetail" data-idx="{{idx}}" class="border-left {{idx === 0 ? 'addBorder' : ''}}">
                 <listItem name="{{item.name}}"
                     address="{{item.address}}"
                     distance="{{item.distance}}"
