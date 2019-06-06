@@ -1,0 +1,247 @@
+.container{
+    height: 100%;
+    width: 100%;
+    background-color: #eee;
+}
+.header{
+    width: 100%;
+    height: 380rpx;
+}
+.headerImg{
+    width: 100%;
+    height: 380rpx;
+}
+.middle{
+    height: 110rpx;
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    border-bottom: 1px solid #eeeeee;
+}
+.address{
+    width: 600rpx;
+    height: 110rpx;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid #eeeeee;
+}
+.storeName{
+    line-height: 40rpx;
+    font-size: 28rpx;
+    font-weight: bold;
+    margin-left: 40rpx;
+}
+.storeAdress{
+    line-height: 34rpx;
+    font-size: 22rpx;
+    color: #737373;
+    margin: 0 40rpx;
+}
+.member{
+    width: 150rpx;
+    height: 110rpx;
+    padding: 16rpx 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+.menberImg{
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 50%;
+    margin: 0 ;
+}
+.memberText{
+    position: relative;
+    width: 100%;
+    font-size: 24rpx;
+    line-height: 24rpx;
+    text-align: center;
+    margin-top: 14rpx;
+}
+.menuContent{
+    width: 100%;
+    display: flex;
+}
+.scrollLeft{
+    width: 120rpx;
+    height: 1205rpx;
+    /* height: 720rpx; */
+    overflow: scroll;
+    background-color: #fff;
+}
+.search{
+    width: 100%;
+    height: 136rpx;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    border-bottom: 1px solid #eeeeee;
+    z-index: 1;
+}
+.searchImage{
+    width: 40rpx;
+    height: 40rpx;
+    margin-top: 35rpx;
+}
+.searchText{
+    position: relative;
+    bottom: 16rpx;
+    font-size: 24rpx;
+    line-height: 1
+}
+.select{
+    width: 120rpx;
+    padding: 28rpx 0;
+    text-align: center;
+    border-bottom: 1px solid #eeeeee;
+}
+.selected{
+    width: 120rpx;
+    padding: 28rpx 0;
+    border-left: 10rpx solid #ffc836;
+    text-align: center;
+    border-bottom: 1px solid #eeeeee;
+    background-color: #eeeeee;
+}
+.selImg{
+    height: 60rpx;
+    width: 60rpx;
+}
+.selectText{
+    font-size: 28rpx;
+    line-height: 42rpx;
+}
+.selectedText{
+    font-size: 28rpx;
+    line-height: 36rpx;
+    color: #ffc836;
+}
+.scrollRight{
+    width: 602rpx;
+    height: 1205rpx;
+    /* height: 720rpx; */
+    overflow: scroll;
+    margin: 15rpx 0 0 28rpx;
+    box-sizing: border-box;
+}
+.food{
+    position: relative;
+    width: 580rpx;
+    height: 340rpx;
+    margin-bottom: 20rpx;
+    margin-right: 22rpx;
+    box-shadow: 4rpx 6rpx 20rpx #b3b3b3;
+    border-radius: 10rpx;
+    padding: 30rpx 20rpx;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+.foodName{
+    width: 100%;
+    font-size: 34rpx;
+    line-height: 1;
+    font-family: serif;
+    text-align: right;
+    font-weight: bold;
+}
+.foodPrice{
+    position: absolute;
+    font-size: 28rpx;
+    line-height: 1;
+    font-weight: bold;
+    right: 20rpx;
+}
+.foodPriceNum{
+    font-size: 34rpx;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 15rpx;
+}
+.foodPci{
+    width: 250rpx;
+    height: 250rpx;
+    display: inline-block;
+}
+.custom{
+    position: absolute;
+    width: 240rpx;
+    height: 60rpx;
+    top: 115rpx;
+    right: 50rpx;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+.customText{
+    font-size: 28rpx;
+    line-height: 60rpx;
+    font-weight: bold;
+    margin-right: 15rpx;
+}
+.customBtn{
+    width: 40rpx;
+    height: 40rpx;
+    background-color: #ffc836;
+    border-radius: 50%;
+}
+.customPic{
+    width: 30rpx;
+    height: 30rpx;
+    margin: 0 0 5rpx 5rpx;
+}
+.order{
+    position: absolute;
+    width: 240rpx;
+    height: 60rpx;
+    top: 175rpx;
+    right: 50rpx;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+.orderText{
+    font-size: 28rpx;
+    line-height: 60rpx;
+    font-weight: bold;
+    margin-right: 15rpx;
+}
+.orderBtn{
+    width: 40rpx;
+    height: 40rpx;
+    background-color: #ffc836;
+    border-radius: 50%;
+}
+.orderselect{
+    height: 40rpx;
+    width: 125rpx;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ffc836;
+    border-radius: 40rpx;
+}
+.reduce{
+    width: 40rpx;
+    height: 40rpx;
+    background-color: #fff;
+    border-radius: 50%;
+}
+.orderTitle{
+    width: 42rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    text-align: center;
+    font-size: 24rpx;
+}
+.add{
+    width: 40rpx;
+    height: 40rpx;
+    background-color: #ffc836;
+    border-radius: 50%;
+}
+.orderPic{
+    width: 30rpx;
+    height: 30rpx;
+    margin: 0 0 5rpx 5rpx;
+}

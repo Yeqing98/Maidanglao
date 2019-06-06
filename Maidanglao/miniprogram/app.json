@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/menu/menu",
     "pages/index/index",
     "pages/cart/cart",
     "pages/settlement/settlement"
@@ -7,6 +8,8 @@
   "window": {
     "backgroundColor": "#ffffff",
     "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "",
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "选择门店",
     "navigationBarTextStyle": "black"
