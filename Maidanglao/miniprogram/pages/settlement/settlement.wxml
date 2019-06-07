@@ -10,10 +10,10 @@
     <view class="res-info">
       <view class="res-name">
         <image class="res-name-icon" src="../../images/settlement/location.png" />
-        <text class="res-name-txt">南昌麦当劳凤凰中大道（万达）餐厅</text>
+        <text class="res-name-txt">{{storeInfo.name}}</text>
       </view>
       <view class="res-address">
-        <text class="res-address-name">江西省南昌市东湖区红谷滩万达广场二层2055号商铺大玩家旁和三层3036商铺万达影城旁</text>
+        <text class="res-address-name">{{storeInfo.address}}</text>
       </view>
     </view>
     <view class="res-address-icon"></view>

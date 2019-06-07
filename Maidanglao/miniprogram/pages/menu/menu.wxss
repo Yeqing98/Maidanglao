@@ -242,7 +242,7 @@
 .orderPic{
     width: 30rpx;
     height: 30rpx;
-    margin: 0 0 5rpx 5rpx;
+    margin: 0 0 6rpx 6rpx;
 }
 /* 购物列表 */
 .shoppingList{

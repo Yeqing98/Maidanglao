@@ -14,6 +14,7 @@ Page({
       {image: '../../images/menuImg/u=2824315576,2536577732&fm=26&gp=0.jpg'},
       {image: '../../images/menuImg/u=3692471229,4171936325&fm=26&gp=0.jpg'}
     ],
+    storeInfo: {},
     scrollLeft: [
       {
         name: '早餐',
@@ -52,8 +53,6 @@ Page({
       }
     ],
     scrollRight: [],
-    storeName: '南昌麦当劳新建店',
-    storeAdress: '江西省南昌市新建县万达广场大玩家旁边和万达广场二楼',
     curIndex: 0,
     toView: 'l0',
     hidden: true,
@@ -78,7 +77,6 @@ Page({
   scrollTop(e) {
     // console.log(e)
     const scrollTop = e.detail.scrollTop;
-    console.log(scrollTop)
     if(scrollTop > 100) {
       this.setData({
         hidden: false
@@ -127,7 +125,6 @@ Page({
     let totalPrice = this.data.totalPrice;
     const price = parseFloat(scrollRight[index].detail[indexSelect].price);
     totalPrice = totalPrice - price;
-    console.log(e);
     if(title > 1) {
       scrollRight[index].detail[indexSelect].title--;
       this.setData({
@@ -284,7 +281,20 @@ Page({
     
     });
     
-    
+    wx.getStorage({
+      key: 'itemsIndex',
+      success: (res) => {
+        let storeInfo = this.data.storeInfo;
+        storeInfo.name = res.data.name;
+        storeInfo.address = res.data.address;
+        // console.log(storeInfo);
+        this.setData({
+          storeInfo
+        })
+      },
+      fail: () => {},
+      complete: () => {}
+    });
   },
 
   /**

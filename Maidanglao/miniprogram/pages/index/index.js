@@ -82,7 +82,7 @@ Page({
     if (idx) {
       wx.setStorage({
         key:"itemsIndex",
-        data: this.data.items[idx]
+        data: this.data.items[idx],
       })
     } else {
       wx.setStorage({
@@ -91,7 +91,7 @@ Page({
       })
     }
     wx.navigateTo({
-      url: './menu/menu'
+      url: '../menu/menu'
     })
   },
   changeFocus (e) {

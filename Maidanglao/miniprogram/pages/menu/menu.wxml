@@ -1,5 +1,12 @@
 <view class="container">
-    <swiper indicator-dots="true" indicator-active-color="rgba(242,207,4,1)" autoplay="true" circular="true" interval="4000" duration="1000" class="header" wx:if="{{hidden}}">
+    <swiper indicator-dots="true" 
+        indicator-active-color="rgba(242,207,4,1)" 
+        autoplay="true" 
+        circular="true" 
+        interval="4000" 
+        duration="1000" 
+        class="header" 
+        wx:if="{{hidden}}">
         <swiper-item wx:for="{{adImage}}" wx:key="index">
             <image mode="aspectFill" class="headerImg" src="{{item.image}}" />
         </swiper-item>
@@ -9,8 +16,8 @@
         <navigator style="display: inline-block" target="" url="../index/index" hover-class="navigator-hover">
             <view class="address">
                 <view>
-                    <view class="storeName">{{storeName}}</view>
-                    <view class="storeAdress">{{storeAdress}}</view>
+                    <view class="storeName">{{storeInfo.name}}</view>
+                    <view class="storeAdress">{{storeInfo.address}}</view>
                 </view>
             </view>
         </navigator>
@@ -50,7 +57,7 @@
                         <image src="{{food.img}}" class="foodPci" />
                         <view class="custom">
                             <view class="customText">去定制</view>
-                            <navigator url="" hover-class="none">
+                            <navigator url="../cart/cart" hover-class="none">
                                 <view class="customBtn">
                                     <image src="../../images/menuImg/toRight.png" class="customPic" />
                                 </view>
@@ -124,7 +131,7 @@
                 <view class="priceNum">{{totalPrice}}</view>
             </view>
         </view>
-        <navigator url="../cart/cart" class="shoppingRight">
+        <navigator url="../settlement/settlement" class="shoppingRight">
             <view class="rightText">选好了</view>
             <image src="../../images/menuImg/yellowRight.png" class="rightImg" />
         </navigator>

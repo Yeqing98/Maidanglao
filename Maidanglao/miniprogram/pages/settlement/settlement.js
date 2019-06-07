@@ -29,7 +29,8 @@ Page({
     price: 27.5,
     totalPrice: 27.5,
     isHookInVoice: false,
-    show: false
+    show: false,
+    storeInfo: {}
   },
 
   onChooseTime(e) {
@@ -110,7 +111,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.getStorage({
+      key: 'itemsIndex',
+      success: (res) => {
+        let storeInfo = this.data.storeInfo;
+        storeInfo.name = res.data.name;
+        storeInfo.address = res.data.address;
+        // console.log(storeInfo);
+        this.setData({
+          storeInfo
+        })
+      },
+      fail: () => {},
+      complete: () => {}
+    });
   },
 
   /**
