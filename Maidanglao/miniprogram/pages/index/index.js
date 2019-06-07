@@ -42,35 +42,6 @@ Page({
         longitude: 115.837960,
       }
     ],
-    staticItems: [
-      {
-        name: "南昌麦当劳凤凰中大道(万达)餐厅",
-        address: "江西省南昌市东湖区红谷滩万达广场二层2055号商铺大玩家旁和三层3036商铺万达影城旁",
-        distance: "3.0",
-        icons: ["亲子活动","甜品站","Wi-Fi","McCafe"],
-        index: 0,
-        latitude: 28.693638,
-        longitude: 115.849830,
-      },
-      {
-        name: "南昌麦当劳新建中心餐厅",
-        address: "江西省南昌市新建区新建中心一楼",
-        distance: "3.8",
-        icons: ["亲子活动","Wi-Fi"],
-        index: 1,
-        latitude: 28.680130,
-        longitude: 115.819126,
-      },
-      {
-        name: "南昌麦当劳丰和南大道DT(山姆会员店)餐厅",
-        address: "江西省南昌市新建区乐世界购物中心",
-        distance: "6.5",
-        icons: ["得速来","亲子活动","甜品站"],
-        index: 2,
-        latitude: 28.655750,
-        longitude: 115.837960,
-      }
-    ],
     isRight: true,
     showMarker: true,
     coordinates: [
@@ -94,7 +65,7 @@ Page({
    */
   onLoad: function (options) {
     wx.setStorage({
-      key:"testNum",
+      key:"items",
       data: this.data.items
     })
     let height = wx.getSystemInfoSync().windowHeight;
@@ -106,7 +77,19 @@ Page({
     })
     this.addMarkers();
   },
-  toDetail () {
+  toDetail (e) {
+    let idx = e.currentTarget.dataset.idx;
+    if (idx) {
+      wx.setStorage({
+        key:"itemsIndex",
+        data: this.data.items[idx]
+      })
+    } else {
+      wx.setStorage({
+        key:"itemsIndex",
+        data: this.data.items[0]
+      })
+    }
     wx.navigateTo({
       url: './menu/menu'
     })
@@ -119,10 +102,9 @@ Page({
         that.setData({
           showMarker: !this.data.showMarker
         })
-        console.log(1)
       } else {
         wx.getStorage({
-          key:"testNum",
+          key:"items",
           success:function(res){
             let its = res.data;
             let head = its[index];
@@ -137,7 +119,6 @@ Page({
           index: index,
           showMarker: true
         })
-        console.log(0)
       }
     })
     promise.then(
