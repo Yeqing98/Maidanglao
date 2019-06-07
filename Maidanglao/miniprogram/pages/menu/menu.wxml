@@ -4,6 +4,7 @@
             <image mode="aspectFill" class="headerImg" src="{{item.image}}" />
         </swiper-item>
     </swiper>
+    <!-- 地址栏 -->
     <view class="middle" wx:if="{{hidden}}">
         <navigator style="display: inline-block" target="" url="../index/index" hover-class="navigator-hover">
             <view class="address">
@@ -18,6 +19,7 @@
             <text class="memberText">会员中心</text>
         </view>
     </view>
+    <!-- 选餐栏 -->
     <view class="menuContent">
         <view class="scrollLeft">
             <scroll-view scroll-y>
@@ -56,22 +58,75 @@
                         </view>
                         <view class="order">
                             <view class="orderText">大套餐</view>
-                            <view class="orderBtn" wx:if="{{false}}" bindtap="OnAdd" data-id="{{id}}" data-index="{{index}}">
-                                <image src="../../images/menuImg/jiahao.png" class="orderPic" />
-                            </view>
-                            <view class="orderselect">
-                                <view class="reduce" bindtap="OnReduce">
+                            <view class="orderselect" wx:if="{{food.showCombo}}">
+                                <view class="reduce" bindtap="OnReduce" data-id="{{item.id}}" data-index="{{index}}">
                                     <image src="../../images/menuImg/jianhao.png" class="orderPic" />
                                 </view>
                                 <text class="orderTitle">{{food.title}}</text>
-                                <view class="add" bindtap="OnAdd" data-id="{{id}}" data-index="{{index}}">
+                                <view class="add" bindtap="OnAdd" data-id="{{item.id}}" data-index="{{index}}">
                                     <image src="../../images/menuImg/jiahao.png" class="orderPic" />
                                 </view>
+                            </view>
+                            <view class="orderBtn" wx:else bindtap="OnAdd" data-id="{{item.id}}" data-index="{{index}}">
+                                <image src="../../images/menuImg/jiahao.png" class="orderPic" />
                             </view>
                         </view>
                     </view>
                 </block>
             </scroll-view>
         </view>
+    </view>
+    <!-- 选餐列表 -->
+    <view class="shoppingList" wx:if="{{showList && totalPrice != 0}}">
+        <view class="shadow" bindtap="onList"></view>
+        <view class="shoppingBottom">
+            <view class="shoppingHeader">
+                <view class="hasSelected">
+                    <image src="../../images/menuImg/shoppingGray.png" class="image" />
+                    <view class="text">已选产品</view>
+                </view>
+                <view class="empty" bindtap="onEmpty">
+                    <image src="../../images/menuImg/lajitong.png" class="image" />
+                    <view class="text">清空</view>
+                </view>
+            </view>
+            <scroll-view scroll-y 
+                style="max-height: 534rpx">
+                <block wx:for="{{scrollRight}}" wx:key="index">
+                    <view class="shoppingBody" wx:for="{{item.detail}}" wx:for-item="food" wx:if="{{food.showCombo}}" wx:key="index">
+                        <view class="name">{{food.name}}</view>
+                        <view class="unitPrice">
+                            ￥
+                            <view class="unitPriceNum">{{food.price * food.title}}</view>
+                        </view>
+                        <view class="orderselect addPlace">
+                            <view class="reduce" bindtap="OnReduce" data-id="{{item.id}}" data-index="{{index}}">
+                                <image src="../../images/menuImg/jianhao.png" class="orderPic" />
+                            </view>
+                            <text class="orderTitle">{{food.title}}</text>
+                            <view class="add" bindtap="OnAdd" data-id="{{item.id}}" data-index="{{index}}">
+                                <image src="../../images/menuImg/jiahao.png" class="orderPic" />
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </scroll-view>
+        </view>
+    </view>
+    <!-- 选好了 -->
+    <view class="shopping" wx:if="{{totalPrice != 0}}">
+        <view class="shoppingLeft">
+            <view class="shoppingCar" bindtap="onList">
+                <image src="../../images/menuImg/shopping.png" class="shoppingImg" />
+            </view>
+            <view class="shoppingPrice">
+                <view class="priceTitle">￥</view>
+                <view class="priceNum">{{totalPrice}}</view>
+            </view>
+        </view>
+        <navigator url="../cart/cart" class="shoppingRight">
+            <view class="rightText">选好了</view>
+            <image src="../../images/menuImg/yellowRight.png" class="rightImg" />
+        </navigator>
     </view>
 </view>
