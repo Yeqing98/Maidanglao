@@ -1,36 +1,23 @@
 // miniprogram/pages/cart/cart.js
+const db = wx.cloud.database();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    zhushi: {imgUrl: '../../images/cart/zhushi.png', name: '双层汉堡', price: 24.5},
-    xiaoshi: [
-      {imgUrl: '../../images/cart/xiaoshi1.png', name: '小食1', price: 10},
-      {imgUrl: '../../images/cart/xiaoshi2.png', name: '小食2', price: 20},
-      {imgUrl: '../../images/cart/xiaoshi3.png', name: '小食3', price: 30},
-      {imgUrl: '../../images/cart/xiaoshi4.png', name: '小食4', price: 40},
-      {imgUrl: '../../images/cart/xiaoshi5.png', name: '小食5', price: 50}
-    ],
-    drink: [
-      {imgUrl: '../../images/cart/drink1.png', name: '饮料1', price: 1},
-      {imgUrl: '../../images/cart/drink2.png', name: '饮料2', price: 2},
-      {imgUrl: '../../images/cart/drink3.png', name: '饮料3', price: 3},
-      {imgUrl: '../../images/cart/drink4.png', name: '饮料4', price: 4},
-      {imgUrl: '../../images/cart/drink5.png', name: '饮料5', price: 5},
-      {imgUrl: '../../images/cart/drink6.png', name: '饮料6', price: 6},
-      {imgUrl: '../../images/cart/drink7.png', name: '饮料7', price: 7},
-      {imgUrl: '../../images/cart/drink8.png', name: '饮料8', price: 8},
-    ],
+    zhushi: {},
+    xiaoshi: [],
+    drink: [],
     xiaoshiPrice: 0,
     drinkPrice: 0,
     unitPrice: 0,
-    number: 0,
+    number: 1,
     totalPrice: 0
   },
   init(){
     let Data = this.data;
+    const number = Data.number;
     let XiaoshiPrice = Data.xiaoshi[0].price;
     let DrinkPrice = Data.drink[0].price;
     this.setData({
@@ -41,12 +28,14 @@ Page({
     this.setData({
       unitPrice: UnitPrice
     })
+    this.getTotalPrice(number)
     // console.log(Data.xiaoshiPrice, Data.drinkPrice, Data.unitPrice);
   },
   chooseXiaoshi(e){
     // console.log(e.detail.current);
     let index = e.detail.current;
     let Data = this.data;
+    const number = Data.number;
     let XiaoshiPrice = Data.xiaoshi[index].price;
     this.setData({
       xiaoshiPrice: XiaoshiPrice
@@ -55,11 +44,13 @@ Page({
     this.setData({
       unitPrice: UnitPrice
     })
+    this.getTotalPrice(number);
   },
   chooseDrink(e){
     // console.log(e.detail.current);
     let index = e.detail.current;
     let Data = this.data;
+    const number = Data.number;
     let DrinkPrice = Data.drink[index].price;
     this.setData({
       drinkPrice: DrinkPrice
@@ -68,6 +59,7 @@ Page({
     this.setData({
       unitPrice: UnitPrice
     })
+    this.getTotalPrice(number);
   },
   clickAdd(){
     // console.log(e);
@@ -97,7 +89,7 @@ Page({
   },
   navigate(){
     wx.redirectTo({
-      url: '../example/example',
+      url: '../menu/menu',
       fail: wx.showToast({
         title: '页面跳转失败',
         icon: 'none'
@@ -110,8 +102,46 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.init();
-    
+    const that = this;
+    wx.getStorage({
+      key: "cartFood",
+      success: (res) => {
+        let zhushi = this.data.zhushi;
+        zhushi = res.data;
+        // console.log(zhushi)
+        this.setData({
+          zhushi
+        })
+      },
+    });
+    wx.cloud.callFunction({
+      name: 'foodData',
+      success: (res) => {
+        // console.log(res);
+        db.collection('breakfast')
+        .get()
+        .then(res => {
+          // console.log(res);
+          let xiaoshi = this.data.xiaoshi;
+          xiaoshi = res.data[5].detail.slice(0,5);
+          // console.log(xiaoshi);
+          this.setData({
+            xiaoshi
+          })
+          return res;
+        })
+        .then((res) => {
+          let drink = this.data.drink;
+          drink = res.data[6].detail.slice(0,5);
+          this.setData({
+            drink
+          })
+        })
+        .then(() => {
+          that.init();
+        })
+      }
+    })
   },
 
   /**

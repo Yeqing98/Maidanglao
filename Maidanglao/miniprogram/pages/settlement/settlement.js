@@ -30,7 +30,8 @@ Page({
     totalPrice: 27.5,
     isHookInVoice: false,
     show: false,
-    storeInfo: {}
+    storeInfo: {},
+    foods: []
   },
 
   onChooseTime(e) {
@@ -125,6 +126,20 @@ Page({
       fail: () => {},
       complete: () => {}
     });
+    wx.getStorage({
+      key: 'settlement',
+      success: (res) => {
+        // console.log(res)
+        const foods = res.data;
+        // console.log(foods)
+        this.setData({
+          foods
+        })
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+      
   },
 
   /**

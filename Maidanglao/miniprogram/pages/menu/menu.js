@@ -163,6 +163,26 @@ Page({
       showList: false
     })
   },
+  // 跳转到cart页面
+  gotoCart(e) {
+    // console.log(e)
+    const id = e.currentTarget.dataset.id;
+    const indexSelect = e.currentTarget.dataset.index;
+    let index = id.split('l')[1];
+    let scrollRight = this.data.scrollRight;
+    const zhushi = scrollRight[index].detail[indexSelect];
+    console.log(zhushi);
+    wx.setStorage({
+      key: "cartFood",
+      data: zhushi
+    })
+  },
+  gotoSettlement() {
+    wx.setStorage({
+      key: "settlement",
+      data: this.data.scrollRight
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

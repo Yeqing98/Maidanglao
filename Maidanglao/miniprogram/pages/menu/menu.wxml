@@ -58,7 +58,7 @@
                         <view class="custom">
                             <view class="customText">去定制</view>
                             <navigator url="../cart/cart" hover-class="none">
-                                <view class="customBtn">
+                                <view class="customBtn" bindtap="gotoCart" data-id="{{item.id}}" data-index="{{index}}">
                                     <image src="../../images/menuImg/toRight.png" class="customPic" />
                                 </view>
                             </navigator>
@@ -131,7 +131,7 @@
                 <view class="priceNum">{{totalPrice}}</view>
             </view>
         </view>
-        <navigator url="../settlement/settlement" class="shoppingRight">
+        <navigator url="../settlement/settlement" class="shoppingRight" bindtap="gotoSettlement" >
             <view class="rightText">选好了</view>
             <image src="../../images/menuImg/yellowRight.png" class="rightImg" />
         </navigator>

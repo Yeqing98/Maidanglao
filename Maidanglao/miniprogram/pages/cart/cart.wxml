@@ -2,7 +2,7 @@
 <view class="main">
   <view class="zhushi look">
     <view class="Option">主食</view>
-    <image class="zhushi-img" src="{{zhushi.imgUrl}}" />
+    <image class="zhushi-img" src="{{zhushi.img}}" />
     <view class="zhushi-txt">{{zhushi.name}}</view>
   </view>
   <view class="xiaoshi look">
@@ -18,7 +18,7 @@
       bindchange="chooseXiaoshi">
       <block wx:for="{{xiaoshi}}" wx:key="{{index}}">
         <swiper-item class="" item-id="" data-price="{{item.price}}">          
-          <image class="slide-img" src="{{item.imgUrl}}" />
+          <image class="slide-img" src="{{item.img}}" />
           <view class="slide-txt">{{item.name}}</view>
         </swiper-item>
     </block>
@@ -37,7 +37,7 @@
       bindchange="chooseDrink">
       <block wx:for="{{drink}}" wx:key="{{index}}">
         <swiper-item class="" item-id="">          
-          <image class="slide-img" src="{{item.imgUrl}}" />
+          <image class="slide-img" src="{{item.img}}" />
           <view class="slide-txt">{{item.name}}</view>
         </swiper-item>
     </block>
